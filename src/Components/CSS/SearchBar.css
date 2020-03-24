@@ -1,0 +1,10 @@
+.searchbar-container {
+    width: 250px;
+    padding: 4px 12px;
+    background-color: var(--color-secondary-trans);
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

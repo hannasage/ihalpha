@@ -1,0 +1,39 @@
+.recentgames-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 8px;
+    /* background-color: var(--neutral-dark); */
+    border-radius: 8px;
+    /* max-width: calc(100% - 250px) */
+}
+
+.recentgames-logo-container {
+    margin: 8px 16px;
+    max-width: 200px;
+    max-height: 200px;
+    height: auto;
+    display: flex;
+}
+
+.recentgames-logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.recentgames-winloss {
+    padding: 0;
+    margin: 8px 16px;
+}
+
+.recentgames-matchcard-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 2px 16px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}

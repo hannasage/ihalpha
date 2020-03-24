@@ -1,0 +1,36 @@
+.matchcard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    min-width: 150px;
+    min-height: 175px;
+    margin: 0 2px;
+    /* background-color: white; */
+    color: white;
+    /* border-radius: 10px; */
+    opacity: .5;
+    transition: 250ms;
+    user-select: none;
+}
+
+.matchcard-container:hover {
+    opacity: 1;
+    cursor: pointer;
+    background-color: var(--color-secondary);
+}
+
+.matchcard-text-container {
+    padding: 16px;
+}
+
+.matchcard-text {
+    font-size: 1em;
+    letter-spacing: 1px;
+    font-weight: 600;
+    user-select: none;
+    /* opacity: 0.7; */
+    color: white;
+    margin: 0
+}
