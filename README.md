@@ -22,4 +22,3 @@ Currently, there are a limited number of implemented test features:
 - Team Management
 - Tournaments
 - Messages
-
