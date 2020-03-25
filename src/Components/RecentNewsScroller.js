@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import NewsCard from './Subcomponents/NewsCard';
 import img1 from '../img/aphelios.jpg'
 import img2 from '../img/sett.jpg'
 import img3 from '../img/lux.jpg'
+import { DummyContext } from '../Context/DummyState.js'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -35,29 +36,17 @@ const useStyles = makeStyles(theme => ({
 function RecentNewsScroller(props) {
 
     const classes = useStyles()
-
+    const { fakeNews } = useContext(DummyContext)
     return (
         <div className={classes.container}>
-            <NewsCard 
-                title='New Champion: Aphelios' 
-                desc='The Weapon of the Faithful'
-                img={img1} />
-            <NewsCard 
-                title='Sett: A new brawl in the Top Lane' 
-                desc='Learn how world-renowend top laners are using Sett'
-                img={img2} />
-            <NewsCard 
-                title='One Sneaky Boi' 
-                desc='How C9-famed ADC went from the rift to OnlyFans'
-                img={img3} />
-            <NewsCard 
-                title='New Champion: Aphelios' 
-                desc='The Weapon of the Faithful'
-                img={img1} />
-            <NewsCard 
-                title='Sett: A new brawl in the Top Lane' 
-                desc='Learn how world-renowend top laners are using Sett'
-                img={img2} />
+            {
+                fakeNews.map(news => 
+                    <NewsCard
+                        title={news.title}
+                        desc={news.desc}
+                        img={news.img} />
+                )
+            }
         </div>
     )
 }

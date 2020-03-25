@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import lol from '../img/lol-logo.png'
 import RadialChart from './Subcomponents/RadialChart.js'
 import MatchCard from './Subcomponents/MatchCard'
+import { DummyContext } from '../Context/DummyState.js'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -46,96 +47,10 @@ const useStyles = makeStyles(theme => ({
 
 function RecentGames() {
 
-    let dummyGames = [
-        {
-            win: true,
-            champ: 'Sett',
-            k: 5,
-            d: 0,
-            a: 12
-        },
-        {
-            win: true,
-            champ: 'Sett',
-            k: 8,
-            d: 2,
-            a: 9
-        },
-        {
-            win: false,
-            champ: 'Lux',
-            k: 0,
-            d: 2,
-            a: 11
-        },
-        {
-            win: true,
-            champ: 'Aphelios',
-            k: 12,
-            d: 2,
-            a: 10
-        },
-        {
-            win: false,
-            champ: 'Sett',
-            k: 2,
-            d: 7,
-            a: 11
-        },
-        {
-            win: false,
-            champ: 'Aphelios',
-            k: 5,
-            d: 5,
-            a: 3
-        },
-        {
-            win: true,
-            champ: 'Sett',
-            k: 5,
-            d: 0,
-            a: 12
-        },
-        {
-            win: true,
-            champ: 'Sett',
-            k: 8,
-            d: 2,
-            a: 9
-        },
-        {
-            win: false,
-            champ: 'Lux',
-            k: 0,
-            d: 2,
-            a: 11
-        },
-        {
-            win: true,
-            champ: 'Aphelios',
-            k: 12,
-            d: 2,
-            a: 10
-        },
-        {
-            win: false,
-            champ: 'Sett',
-            k: 2,
-            d: 7,
-            a: 11
-        },
-        {
-            win: false,
-            champ: 'Aphelios',
-            k: 5,
-            d: 5,
-            a: 3
-        },
-    ]
-
     let classes = useStyles()
+    let { matchHistory } = useContext(DummyContext)
 
-    let matches = dummyGames.map(game =>
+    let matches = matchHistory.map(game =>
         <MatchCard 
             win={game.win} 
             champ={game.champ} 

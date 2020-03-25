@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { GlobalProvider } from './Context/DummyState.js'
 import NavButton from './Components/Subcomponents/NavButton.js'
 import Home from './Components/Home.js'
 import Avatar from '@material-ui/core/Avatar';
@@ -118,49 +119,51 @@ function App() {
   )
 
   return (
-    <div className={classes.app}>
-      <Router>
-        <div style={{
-          width: '100%',
-          height: '100%'
-          }}>
-          <div className={classes.navigationContainer }>
-            <h3 className={classes.navigationTitle}>inHouse.</h3>
+    <GlobalProvider>
+      <div className={classes.app}>
+        <Router>
+          <div style={{
+            width: '100%',
+            height: '100%'
+            }}>
+            <div className={classes.navigationContainer }>
+              <h3 className={classes.navigationTitle}>inHouse.</h3>
 
-            <div className={classes.teamContainer}>
-              <AvatarGroup className={classes.teamAvis}>
-                <Avatar className={classes.filled}>KH</Avatar>
-                <Avatar className={classes.unfilled}>?</Avatar>
-                <Avatar className={classes.unfilled}>?</Avatar>
-                <Avatar className={classes.filled} alt="Doublelift">DL</Avatar>
-                <Avatar className={classes.filled} alt="CoreJJ">JJ</Avatar>
-              </AvatarGroup>
-              <div className={classes.queueButton}>
-                <p>Queue</p>
+              <div className={classes.teamContainer}>
+                <AvatarGroup className={classes.teamAvis}>
+                  <Avatar className={classes.filled}>KH</Avatar>
+                  <Avatar className={classes.unfilled}>?</Avatar>
+                  <Avatar className={classes.unfilled}>?</Avatar>
+                  <Avatar className={classes.filled} alt="Doublelift">DL</Avatar>
+                  <Avatar className={classes.filled} alt="CoreJJ">JJ</Avatar>
+                </AvatarGroup>
+                <div className={classes.queueButton}>
+                  <p>Queue</p>
+                </div>
+              </div>
+
+              <div className={classes.navigationLinkContainer}>
+                {navButtons}
               </div>
             </div>
-
-            <div className={classes.navigationLinkContainer}>
-              {navButtons}
-            </div>
           </div>
-        </div>
-        
+          
 
-        <Switch>
-            <Redirect exact from='/' to='/home' />
-            <Route path="/home" component={Home}>
-                <Home />
-            </Route>
-            <Route path="/schedule">
-                Schedule
-            </Route>
-            <Route path="/tournaments">
-                Tournaments
-            </Route>
-        </Switch>
-      </Router>
-    </div>
+          <Switch>
+              <Redirect exact from='/' to='/home' />
+              <Route path="/home" component={Home}>
+                  <Home />
+              </Route>
+              <Route path="/schedule">
+                  Schedule
+              </Route>
+              <Route path="/tournaments">
+                  Tournaments
+              </Route>
+          </Switch>
+        </Router>
+      </div>
+    </GlobalProvider>
   );
 }
 

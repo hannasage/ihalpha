@@ -1,42 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import GameCard from './Subcomponents/GameCard'
-import tl from '../img/tl.png'
-import dig from '../img/dig.png'
-import clg from '../img/clg.png'
-import thieves from '../img/100t.png'
-import tsm from '../img/tsm.png'
-import gg from '../img/gg.png'
-import c9 from '../img/c9.png'
-import eg from'../img/eg.png'
-
-const dummydata = [
-    {
-        team: 'Clout 9',
-        record: '13-1',
-        img: c9
-    },
-    {
-        team: 'Clout 9',
-        record: '13-1',
-        img: c9
-    },
-    {
-        team: 'Digletas',
-        record: '5-9',
-        img: dig
-    },
-    {
-        team: 'Digletas',
-        record: '5-9',
-        img: dig
-    },
-    {
-        team: 'E.V.I.L. Genies',
-        record: '7-7',
-        img: eg
-    }
-]
+import { DummyContext } from '../Context/DummyState.js'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -77,12 +42,13 @@ const useStyles = makeStyles(theme => ({
 function UpcomingGamesScroller() {
 
     const classes = useStyles()
+    const { upcoming } = useContext(DummyContext)
 
     return (
         <div className={classes.container}>
             <div className={classes.scroller}>
                 {
-                    dummydata.map(game => 
+                    upcoming.map(game => 
                         <GameCard
                             team={game.team}
                             record={game.record}
