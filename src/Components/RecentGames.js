@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
         maxWidth: '100%',
         height: 'auto',
         display: 'block',
+        objectFit: 'cover',
 
         [theme.breakpoints.down('sm')]: {
         }

@@ -33,10 +33,17 @@ const useStyles = makeStyles(theme => ({
         transition: '250ms',
         userSelect: 'none',
 
-        '&:hover': {
-            opacity: '1',
-            cursor: 'pointer',
+        [theme.breakpoints.up('md')]: {
+            '&:hover': {
+                opacity: '1',
+                cursor: 'pointer',
+            }
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            opacity: '1'
         }
+        
     },
     textContainer: {
         padding: '16px',
