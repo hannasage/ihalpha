@@ -15,13 +15,28 @@ const useStyles = makeStyles(theme => ({
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+
+        [theme.breakpoints.down('sm')]: {
+            height: 'auto',
+            margin: '0',
+        }
     },
     titlesContainer: {
         display: 'flex',
         position: 'relative',
         flexDirection: 'row',
-        margin: '24px 0 12px 0'
+        margin: '24px 0 12px 0',
+
+        [theme.breakpoints.down('sm')]: {
+            margin: '16px 0',
+            overflowX: 'scroll',
+            scrollbarWidth: 'none',
+
+            '&::-webkit-scrollbar': {
+                display: 'none'
+            }
+        }
     }
 }))
 

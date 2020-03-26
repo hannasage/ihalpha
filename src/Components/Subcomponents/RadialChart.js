@@ -35,7 +35,8 @@ function RadialChart(props) {
         'rgb(117, 62, 218)'
     ]
 
-    let circ = 2 * 3.14 * (props.size*.4)
+    
+    let circ = 2 * 3.1415927 * (props.size*.4)
     let strokeLength = circ / 100 * props.progress
 
     return (

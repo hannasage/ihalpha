@@ -11,7 +11,11 @@ const useStyles = makeStyles(theme => ({
         width: 'calc(100% - 250px)', 
         display: 'flex', 
         flexDirection: 'column', 
-        position: 'relative'
+        position: 'relative',
+
+        [theme.breakpoints.down('sm')]: {
+            width: '100%',
+        }
     }
 }))
 

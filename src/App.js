@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { GlobalProvider } from './Context/DummyState.js'
 import NavButton from './Components/Subcomponents/NavButton.js'
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import Home from './Components/Home.js'
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
@@ -11,7 +13,12 @@ import { BrowserRouter as Router, Switch, Route, NavLink, Redirect } from "react
 const useStyles = makeStyles(theme => ({
   app: {
     textAlign: 'center',
-    display: 'flex'
+    display: 'flex',
+    
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      overflow: 'hidden',
+    }
   },
   navigationContainer: {
     backgroundColor: 'var(--color-secondary)',
@@ -21,7 +28,13 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    zIndex: '1'
+    zIndex: '2',
+
+    [theme.breakpoints.down('sm')]: {
+      height: '65px',
+      width: '100%',
+      flexDirection: 'row',
+    }
   },
   navigationTitle: {
     fontFamily: "'Press Start 2P'",
@@ -30,16 +43,27 @@ const useStyles = makeStyles(theme => ({
     padding: '32px 0',
     color: 'white',
     textShadow: '-3px 4px var(--color-primary)',
-    userSelect: 'none'
+    userSelect: 'none',
+
+    [theme.breakpoints.down('sm')]: {
+      margin: 'auto 16px',
+      padding: '0',
+      width: 'auto',
+    }
   },
   teamContainer: {
     display: 'flex',
     width: '100%',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+
   },
   teamAvis: {
-    margin: '80px auto 16px auto'
+    margin: '80px auto 16px auto',
+    
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
   },
   unfilled: {
     backgroundColor: 'white',
@@ -73,11 +97,31 @@ const useStyles = makeStyles(theme => ({
 
     '& p': {
       margin: '0'
+    },
+    
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
+  },
+  menuButton: {
+    margin: 'auto 16px',
+
+    [theme.breakpoints.up('md')]: {
+      display: 'none'
     }
   },
   navigationLinkContainer: {
     width: '250px',
-    position: 'relative'
+    position: 'relative',
+    transition: '250ms',
+    backgroundColor: 'var(--color-secondary)',
+
+    [theme.breakpoints.down('sm')]: {
+      position: 'absolute',
+      top: '65px',
+      right: '0',
+      zIndex: '10', //TODO: Fix interaction w/ banner title
+    }
   },
   navigationLink: {
     position: 'relative',
@@ -103,8 +147,6 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
 
-  const classes = useStyles();
-
   const pages = [
     'Home',
     'Team',
@@ -114,9 +156,52 @@ function App() {
     'Tournaments'
   ]
 
+  const classes = useStyles();
+  const [navOpen, setNavOpen] = useState(false)
+  const openNav = navOpen ? {transform: 'translate(0, 0)'} : {transform: 'translate(250px, 0)'}
+
   const navButtons = pages.map(page => 
     <NavLink exact activeClassName={classes.navigationLinkActive} className={classes.navigationLink} to={'/' + page.toLowerCase()}><NavButton text={page} /></NavLink>
   )
+
+  const navLinkContainer = () => {
+    if (window.innerWidth < 960) {
+      return (
+        <div style={openNav} className={classes.navigationLinkContainer}>
+          {navButtons}
+        </div>
+      )
+    } else {
+      return (
+        <div className={classes.navigationLinkContainer}>
+          {navButtons}
+        </div>
+      )
+    }
+  }
+
+  const navigation =
+    <div className={classes.navigationContainer}>
+      <h3 className={classes.navigationTitle}>inHouse.</h3>
+
+      <div className={classes.teamContainer}>
+        <AvatarGroup className={classes.teamAvis}>
+          <Avatar className={classes.filled}>KH</Avatar>
+          <Avatar className={classes.unfilled}>?</Avatar>
+          <Avatar className={classes.unfilled}>?</Avatar>
+          <Avatar className={classes.filled} alt="Doublelift">DL</Avatar>
+          <Avatar className={classes.filled} alt="CoreJJ">JJ</Avatar>
+        </AvatarGroup>
+        <div className={classes.queueButton}>
+          <p>Queue</p>
+        </div>
+      </div>
+
+      <IconButton onClick={() => setNavOpen(!navOpen)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+        <MenuIcon />
+      </IconButton>
+      {navLinkContainer()}
+    </div>
 
   return (
     <GlobalProvider>
@@ -126,39 +211,19 @@ function App() {
             width: '100%',
             height: '100%'
             }}>
-            <div className={classes.navigationContainer }>
-              <h3 className={classes.navigationTitle}>inHouse.</h3>
-
-              <div className={classes.teamContainer}>
-                <AvatarGroup className={classes.teamAvis}>
-                  <Avatar className={classes.filled}>KH</Avatar>
-                  <Avatar className={classes.unfilled}>?</Avatar>
-                  <Avatar className={classes.unfilled}>?</Avatar>
-                  <Avatar className={classes.filled} alt="Doublelift">DL</Avatar>
-                  <Avatar className={classes.filled} alt="CoreJJ">JJ</Avatar>
-                </AvatarGroup>
-                <div className={classes.queueButton}>
-                  <p>Queue</p>
-                </div>
-              </div>
-
-              <div className={classes.navigationLinkContainer}>
-                {navButtons}
-              </div>
-            </div>
+            {navigation}
           </div>
-          
 
           <Switch>
               <Redirect exact from='/' to='/home' />
-              <Route path="/home" component={Home}>
+              <Route path="/home">
                   <Home />
               </Route>
               <Route path="/schedule">
-                  Schedule
+                  {/* Schedule */}
               </Route>
               <Route path="/tournaments">
-                  Tournaments
+                  {/* Tournaments */}
               </Route>
           </Switch>
         </Router>

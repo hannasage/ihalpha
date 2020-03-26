@@ -3,7 +3,7 @@ import { withTheme } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     navButton: {
         color: 'white',
         opacity: '.5',
@@ -28,6 +28,10 @@ const useStyles = makeStyles({
             '&:before': {
                 width: '50px'
             },
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            
         }
     },
     navButtonActive: {
@@ -42,7 +46,7 @@ const useStyles = makeStyles({
             transition: '250ms'
         },
     }
-  });
+  }));
 
 function SectionTabNav(props) {
 

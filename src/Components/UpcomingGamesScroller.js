@@ -26,6 +26,10 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('lg')]: {
             width: '33%'
         },
+
+        [theme.breakpoints.down('sm')]: {
+            minWidth: '100vw'
+        }
     },
     "@keyframes fadeIn": {
         "0%": {

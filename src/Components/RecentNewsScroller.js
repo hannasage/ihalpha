@@ -12,13 +12,22 @@ const useStyles = makeStyles(theme => ({
         height: 'auto',
         margin: '8px',
         display: 'flex',
-        overflowX: 'scroll',
         scrollbarWidth: 'none',
         flexDirection: 'row',
         animation: `$fadeIn 250ms ${theme.transitions.easing.easeInOut}`,
 
         '&::-webkit-scrollbar': {
             display: 'none'
+        },
+
+        [theme.breakpoints.up('md')]: {
+            overflowX: 'scroll'
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            height: 'auto',
+            margin: '0'
         }
     },
     "@keyframes fadeIn": {

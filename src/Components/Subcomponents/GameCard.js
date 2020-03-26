@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
         '&:hover': {
             transform: 'translate(4px, -4px)',
             boxShadow: '-4px 4px 0px 0px var(--color-primary-soft)'
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            margin: '2px 0'
         }
     },
     icon: {

@@ -19,6 +19,10 @@ const useStyles = makeStyles(theme => ({
             background: 'rgb(255,255,255)',
             background: 'radial-gradient(circle, rgba(255,255,255,0) 0%, var(--color-secondary) 80%)',
             opacity: '1'
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            height: '250px'
         }
     },
     bannerImage: {
@@ -27,9 +31,14 @@ const useStyles = makeStyles(theme => ({
         margin: '0 20px',
         objectFit: 'cover',
         filter: 'grayscale(100%)',
-        opacity: '.33'
+        opacity: '.33',
         /* opacity: '.35', */
         /* filter: 'blur(10px)' */
+
+        [theme.breakpoints.down('sm')]: {
+            filter: 'blur(5px) grayscale(100%)',
+            margin: '0'
+        }
     },
     bannerTitleContainer: {
         position: 'absolute',
@@ -43,18 +52,28 @@ const useStyles = makeStyles(theme => ({
         padding: '4%',
         color: 'white',
         letterSpacing: '1px',
-        zIndex: '10',
+        zIndex: '1',
 
         '& h1': {
             margin: '0 16px',
             fontSize: '50px',
             color: 'var(--color-primary-soft)',
-            textShadow: '-3px 4px white'
+            textShadow: '-3px 4px white',
+
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '28px'
+            }
         },
 
         '& p': {
             margin: '0 32px',
             fontWeight: '600'
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '13px',
+            padding: '4%',
+            marginLeft: '8px'
         }
     },
     bannerLink: {

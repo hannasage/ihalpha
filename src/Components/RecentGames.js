@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import lol from '../img/lol-logo.png'
 import RadialChart from './Subcomponents/RadialChart.js'
@@ -12,23 +12,40 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'row',
         alignItems: 'center',
         margin: '0 8px',
-        borderRadius: '8px'
+        borderRadius: '8px',
+
+        [theme.breakpoints.down('sm')]: {
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+            margin: '8px'
+        }
     },
     logoContainer: {
         margin: '8px 16px',
         maxWidth: '200px',
         maxHeight: '200px',
         height: 'auto',
-        display: 'flex'
+        display: 'flex',
+
+        [theme.breakpoints.down('sm')]: {
+            margin: '8px'
+        }
     },
     logo: {
         maxWidth: '100%',
         height: 'auto',
-        display: 'block'
+        display: 'block',
+
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '33vw'
+        }
     },
     radialContainer: {
-        padding: '0',
-        margin: '8px 16px'
+        width: 'auto',
+        
+        [theme.breakpoints.down('sm')]: {
+            // width: '33vw'
+        }
     },
     matchesContainer: {
         position: 'relative',
@@ -41,6 +58,10 @@ const useStyles = makeStyles(theme => ({
 
         '&::-webkit-scrollbar': {
             display: 'none'
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            margin: 0,
         }
     }
 }))
@@ -66,7 +87,7 @@ function RecentGames() {
             <div className={classes.radialContainer}>
                 <RadialChart
                     size='140'
-                    progress={46}
+                    progress={43}
                 />
             </div>
             <div className={classes.matchesContainer}>

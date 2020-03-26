@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     container: {
         position: 'relative',
         display: 'flex',
@@ -23,6 +23,12 @@ const useStyles = makeStyles({
             left: '0',
             background: 'rgb(255,255,255)',
             background: 'linear-gradient(135deg, rgba(28,21,34,1) 25%, rgba(28,21,34,0.8) 60%, rgba(102,46,46,0.5) 100%)'
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            margin: '4px',
+            minWidth: '100vw',
+            height: '33vh',
         }
     },
     titleContainer: {
@@ -35,17 +41,27 @@ const useStyles = makeStyles({
         left: '0',
         zIndex: '1',
         padding: '3% 5%',
+        userSelect: 'none',
 
         '& h2': {
             fontSize: '2em',
             margin: '0',
             textAlign: 'left',
             lineHeight: '1',
-            marginBottom: '8px'
+            marginBottom: '8px',
+
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '1.6em'
+            }
         },
+
         '& p': {
             margin: '0',
             textAlign: 'left'
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '100%'
         }
     },
     bgimg: {
@@ -54,7 +70,7 @@ const useStyles = makeStyles({
         height: '100%',
         objectFit: 'cover',
     }
-});
+}));
 
 function NewsCard(props) {
 
