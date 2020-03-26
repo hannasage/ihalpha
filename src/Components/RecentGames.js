@@ -28,9 +28,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
 
         [theme.breakpoints.down('sm')]: {
-            margin: '8px',
-            maxWidth: '100%',
-            maxHeight: '125px',
+            
         }
     },
     logo: {
