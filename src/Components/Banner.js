@@ -9,16 +9,18 @@ const useStyles = makeStyles(theme => ({
         overflow: 'hidden',
         position: 'relative',
 
-        '&:after': {
-            content: '""',
-            position: 'absolute',
-            top: '0',
-            right: '0',
-            bottom: '0',
-            left: '0', 
-            background: 'rgb(255,255,255)',
-            background: 'radial-gradient(circle, rgba(255,255,255,0) 0%, var(--color-secondary) 80%)',
-            opacity: '1'
+        [theme.breakpoints.up('md')]: {
+            '&:after': {
+                content: '""',
+                position: 'absolute',
+                top: '0',
+                right: '0',
+                bottom: '0',
+                left: '0', 
+                background: 'rgb(255,255,255)',
+                background: 'radial-gradient(circle, rgba(255,255,255,0) 0%, var(--color-secondary) 80%)',
+                opacity: '1'
+            },
         },
 
         [theme.breakpoints.down('sm')]: {
