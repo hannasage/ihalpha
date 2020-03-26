@@ -28,18 +28,14 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
 
         [theme.breakpoints.down('sm')]: {
-            
+            maxWidth: '125px',
+            maxHeight: '125px',
         }
     },
     logo: {
         maxWidth: '100%',
         height: 'auto',
-        display: 'block',
-        objectFit: 'cover',
-
-        [theme.breakpoints.down('sm')]: {
-            maxWidth: '125px',
-        }
+        display: 'block'
     },
     radialContainer: {
         width: 'auto',
