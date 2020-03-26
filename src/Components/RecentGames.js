@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 
         [theme.breakpoints.down('sm')]: {
             margin: '8px',
-            maxWidth: '125px',
+            maxWidth: '100%',
             maxHeight: '125px',
         }
     },
