@@ -40,6 +40,7 @@ const useStyles = makeStyles(theme => ({
         objectFit: 'cover',
 
         [theme.breakpoints.down('sm')]: {
+            maxWidth: '125px',
         }
     },
     radialContainer: {
