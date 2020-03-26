@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
 
         [theme.breakpoints.down('sm')]: {
-            margin: '8px'
+            margin: '8px',
+            maxWidth: '33vw'
         }
     },
     logo: {
@@ -37,7 +38,6 @@ const useStyles = makeStyles(theme => ({
         display: 'block',
 
         [theme.breakpoints.down('sm')]: {
-            maxWidth: '33vw'
         }
     },
     radialContainer: {
