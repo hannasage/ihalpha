@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
         transitionDelay: '0.3s'
     },
     total: {
-        opacity: 0.3
+        opacity: '.5'
     },
     centerLabel: {
         fontSize: '2.3rem'
@@ -31,7 +31,7 @@ function RadialChart(props) {
     const classes = useStyles()
 
     let colors = [
-        '#1C1D21',
+        'rgba(117, 62, 218, .3)',
         'rgb(117, 62, 218)'
     ]
 

@@ -12,7 +12,11 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'row',
         alignItems: 'center',
         margin: '0 8px',
-        borderRadius: '8px',
+        scrollbarWidth: 'none',
+
+        '&::-webkit-scrollbar': {
+            display: 'none',
+        },
 
         [theme.breakpoints.down('sm')]: {
             overflowX: 'scroll',
