@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '100px',
         margin: '8px',
-        backgroundColor: 'rgba(200, 200, 200, .2)',
+        // backgroundColor: 'rgba(200, 200, 200, .2)',
         transition: '100ms',
         display: 'flex',
         justifyContent: 'flex-start',
@@ -16,9 +16,11 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left',
         cursor: 'pointer',
         
-        '&:hover': {
-            transform: 'translate(4px, -4px)',
-            boxShadow: '-4px 4px 0px 0px var(--color-primary-soft)'
+        [theme.breakpoints.up('md')]: {
+            '&:hover': {
+                transform: 'translate(4px, -4px)',
+                boxShadow: '-4px 4px 0px 0px var(--color-primary-soft)'
+            },
         },
 
         [theme.breakpoints.down('sm')]: {
@@ -29,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'rgba(200, 200, 200, 1)',
         width: theme.spacing(8),
         height: theme.spacing(8),
-        margin: '8px',
+        margin: '8px 8px 8px 16px',
     },
     title: {
-        margin: '0 16px',
+        margin: '0 8px',
         userSelect: 'none',
 
         '& p': {

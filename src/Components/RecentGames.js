@@ -15,8 +15,7 @@ const useStyles = makeStyles(theme => ({
         borderRadius: '8px',
 
         [theme.breakpoints.down('sm')]: {
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
+            overflowX: 'scroll',
             margin: '8px'
         }
     },
@@ -28,8 +27,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
 
         [theme.breakpoints.down('sm')]: {
-            maxWidth: '125px',
-            maxHeight: '125px',
+            display: 'none'
         }
     },
     logo: {
@@ -50,15 +48,18 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         height: 'auto',
         margin: '2px 0px 2px 16px',
-        overflowX: 'scroll',
         scrollbarWidth: 'none',
 
         '&::-webkit-scrollbar': {
             display: 'none'
         },
 
+        [theme.breakpoints.up('md')]: {
+            overflowX: 'scroll'
+        },
+
         [theme.breakpoints.down('sm')]: {
-            margin: 0,
+            margin: 0
         }
     }
 }))
